@@ -24,7 +24,9 @@
                                     <constraint firstAttribute="width" secondItem="fOb-gg-cCd" secondAttribute="height" multiplier="375:667" id="JFP-1O-4pK"/>
                                     <constraint firstAttribute="width" constant="375" id="NwB-Jd-MRP"/>
                                     <constraint firstAttribute="height" constant="667" id="Tbn-gR-olU"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="Tne-nb-Cok"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="Xel-ut-oQl"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="667" id="Xjp-SN-sWV"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="gel-cF-nb0"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="667" id="sdV-qj-iWJ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="667" id="ufj-KP-2bU"/>
@@ -85,9 +87,23 @@
                                     <segue destination="yHt-Ye-byb" kind="show" id="jSn-w5-FsU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl9-3C-nel">
+                                <rect key="frame" x="16" y="226" width="154" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="City Name">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="39"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fOb-gg-cCd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3y5-Nf-tXH"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5G1-yg-Jh4"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9yR-73-hIY"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ai8-Pb-GH4"/>
@@ -102,8 +118,11 @@
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aEm-Pn-YVW"/>
                             <constraint firstItem="OJc-xW-WQ9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bzB-V7-66R"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dqP-PJ-9IU"/>
+                            <constraint firstItem="fOb-gg-cCd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gGM-yO-jcP"/>
+                            <constraint firstItem="fOb-gg-cCd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ikv-Vb-uak"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="j7V-wF-i52"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="paH-X7-q8H"/>
+                            <constraint firstItem="fOb-gg-cCd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="puA-Kl-tHW"/>
                             <constraint firstItem="fOb-gg-cCd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rba-Ir-Ssj"/>
                             <constraint firstItem="TXL-cF-trT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w9T-Wt-fOt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TXL-cF-trT" secondAttribute="trailing" constant="16" id="zuj-kZ-3Mc"/>
@@ -112,6 +131,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KJ7-or-7QK"/>
                     <connections>
+                        <outlet property="cityName" destination="Hl9-3C-nel" id="1pY-45-erw"/>
                         <outlet property="currentLocationTemp" destination="OJc-xW-WQ9" id="rIw-Ls-X97"/>
                         <outlet property="weatherIconImage" destination="n69-Lw-1zU" id="p6g-wR-Gwm"/>
                         <outlet property="weatherStatus" destination="AOP-lQ-F3l" id="LJ3-5O-2Kc"/>
@@ -174,13 +194,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="i.e Los Angeles" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-Xb-ofz">
-                                <rect key="frame" x="16" y="150" width="213" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4O-0q-AA8">
                                 <rect key="frame" x="16" y="109" width="80" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -235,6 +248,16 @@
                                     <action selector="dateAndTimePicker:" destination="eHo-Cm-nQA" eventType="valueChanged" id="iaN-K4-uE0"/>
                                 </connections>
                             </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="i.e Los Angeles" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-Xb-ofz">
+                                <rect key="frame" x="16" y="158" width="213" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fasjv:" destination="eHo-Cm-nQA" eventType="editingDidEnd" id="rYr-el-Nno"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.059939853847026825" green="0.83053535223007202" blue="0.74092191457748413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="AZX-bF-Gny"/>

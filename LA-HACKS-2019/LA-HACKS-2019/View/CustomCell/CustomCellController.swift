@@ -1,5 +1,5 @@
 //
-//  CustomCellViewController.swift
+//  CellViewController.swift
 //  LA-HACKS-2019
 //
 //  Created by ali mirabzadeh on 3/30/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CustomCellController : UIViewController{
+class CostumCellController: UIViewController{
     
-  
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,12 +8,14 @@
 
 import UIKit
 
-
 class CustomWeatherController: UIViewController{
+    @IBOutlet weak var cityNameInputTextField: UITextField!
     
-    @IBAction func fasjv(_ sender: UITextField) {
+    @IBAction func dateAndTimePicker(_ sender: UIDatePicker) {
     }
     
-    @IBAction func setTheCustomData(_ sender: UIButton) {
+    @IBAction func setCustomWeatherButton(_ sender: UIButton) {
     }
+    
+    datePicker?.datePickerMode
 }

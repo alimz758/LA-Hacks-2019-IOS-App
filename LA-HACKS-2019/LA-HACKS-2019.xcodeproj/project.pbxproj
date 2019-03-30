@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71B8F8F49D650557D47A168B /* Pods_LA_HACKS_2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BCF03319303BA250C33716C /* Pods_LA_HACKS_2019.framework */; };
+		8A624432224FC290004FA45D /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624431224FC290004FA45D /* WeatherDataModel.swift */; };
+		8A624434224FC2F6004FA45D /* CustomWeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624433224FC2F6004FA45D /* CustomWeatherController.swift */; };
+		8A624436224FC399004FA45D /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624435224FC399004FA45D /* DateModel.swift */; };
+		8A624438224FC44F004FA45D /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624437224FC44F004FA45D /* TimeModel.swift */; };
 		8A72E699224F3888009F9D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E698224F3888009F9D11 /* AppDelegate.swift */; };
 		8A72E69B224F3888009F9D11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E69A224F3888009F9D11 /* ViewController.swift */; };
 		8A72E69E224F3888009F9D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A72E69C224F3888009F9D11 /* Main.storyboard */; };
@@ -35,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A624431224FC290004FA45D /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		8A624433224FC2F6004FA45D /* CustomWeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeatherController.swift; sourceTree = "<group>"; };
+		8A624435224FC399004FA45D /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		8A624437224FC44F004FA45D /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		8A72E695224F3888009F9D11 /* LA-HACKS-2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LA-HACKS-2019.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A72E698224F3888009F9D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A72E69A224F3888009F9D11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +58,9 @@
 		8A72E6B7224F388A009F9D11 /* LA-HACKS-2019UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LA-HACKS-2019UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A72E6BB224F388A009F9D11 /* LA_HACKS_2019UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LA_HACKS_2019UITests.swift; sourceTree = "<group>"; };
 		8A72E6BD224F388A009F9D11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BCF03319303BA250C33716C /* Pods_LA_HACKS_2019.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LA_HACKS_2019.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E7CFD1081C00A965743340 /* Pods-LA-HACKS-2019.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LA-HACKS-2019.debug.xcconfig"; path = "Target Support Files/Pods-LA-HACKS-2019/Pods-LA-HACKS-2019.debug.xcconfig"; sourceTree = "<group>"; };
+		DA210F489F876BC1FCD68A0A /* Pods-LA-HACKS-2019.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LA-HACKS-2019.release.xcconfig"; path = "Target Support Files/Pods-LA-HACKS-2019/Pods-LA-HACKS-2019.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B8F8F49D650557D47A168B /* Pods_LA_HACKS_2019.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +89,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A62442D224FC218004FA45D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A72E69C224F3888009F9D11 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A62442E224FC24D004FA45D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A624431224FC290004FA45D /* WeatherDataModel.swift */,
+				8A624437224FC44F004FA45D /* TimeModel.swift */,
+				8A624435224FC399004FA45D /* DateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A624430224FC26F004FA45D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A72E69A224F3888009F9D11 /* ViewController.swift */,
+				8A624433224FC2F6004FA45D /* CustomWeatherController.swift */,
+				8A72E698224F3888009F9D11 /* AppDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8A72E68C224F3888009F9D11 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +124,8 @@
 				8A72E6AF224F388A009F9D11 /* LA-HACKS-2019Tests */,
 				8A72E6BA224F388A009F9D11 /* LA-HACKS-2019UITests */,
 				8A72E696224F3888009F9D11 /* Products */,
+				E36D1AE8B01807793C794AD4 /* Pods */,
+				E54D898127480D31578DCA1D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +142,9 @@
 		8A72E697224F3888009F9D11 /* LA-HACKS-2019 */ = {
 			isa = PBXGroup;
 			children = (
-				8A72E698224F3888009F9D11 /* AppDelegate.swift */,
-				8A72E69A224F3888009F9D11 /* ViewController.swift */,
-				8A72E69C224F3888009F9D11 /* Main.storyboard */,
+				8A624430224FC26F004FA45D /* Controller */,
+				8A62442E224FC24D004FA45D /* Model */,
+				8A62442D224FC218004FA45D /* View */,
 				8A72E6A2224F388A009F9D11 /* Assets.xcassets */,
 				8A72E6A4224F388A009F9D11 /* LaunchScreen.storyboard */,
 				8A72E6A7224F388A009F9D11 /* Info.plist */,
@@ -128,6 +171,23 @@
 			path = "LA-HACKS-2019UITests";
 			sourceTree = "<group>";
 		};
+		E36D1AE8B01807793C794AD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5E7CFD1081C00A965743340 /* Pods-LA-HACKS-2019.debug.xcconfig */,
+				DA210F489F876BC1FCD68A0A /* Pods-LA-HACKS-2019.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E54D898127480D31578DCA1D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF03319303BA250C33716C /* Pods_LA_HACKS_2019.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +195,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A72E6C0224F388A009F9D11 /* Build configuration list for PBXNativeTarget "LA-HACKS-2019" */;
 			buildPhases = (
+				5A1D2ADB7D9844EAD9B4A214 /* [CP] Check Pods Manifest.lock */,
 				8A72E691224F3888009F9D11 /* Sources */,
 				8A72E692224F3888009F9D11 /* Frameworks */,
 				8A72E693224F3888009F9D11 /* Resources */,
+				8192C1922F60B519CA8C4097 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,11 +316,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A1D2ADB7D9844EAD9B4A214 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LA-HACKS-2019-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8192C1922F60B519CA8C4097 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LA-HACKS-2019/Pods-LA-HACKS-2019-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LA-HACKS-2019/Pods-LA-HACKS-2019-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8A72E691224F3888009F9D11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A624432224FC290004FA45D /* WeatherDataModel.swift in Sources */,
+				8A624434224FC2F6004FA45D /* CustomWeatherController.swift in Sources */,
+				8A624436224FC399004FA45D /* DateModel.swift in Sources */,
+				8A624438224FC44F004FA45D /* TimeModel.swift in Sources */,
 				8A72E69B224F3888009F9D11 /* ViewController.swift in Sources */,
 				8A72E6A1224F3889009F9D11 /* LA_HACKS_2019.xcdatamodeld in Sources */,
 				8A72E699224F3888009F9D11 /* AppDelegate.swift in Sources */,
@@ -434,10 +563,11 @@
 		};
 		8A72E6C1224F388A009F9D11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5E7CFD1081C00A965743340 /* Pods-LA-HACKS-2019.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 99S5NHB72C;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "LA-HACKS-2019/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,16 +576,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "AMZ.LA-HACKS-2019";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		8A72E6C2224F388A009F9D11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA210F489F876BC1FCD68A0A /* Pods-LA-HACKS-2019.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 99S5NHB72C;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "LA-HACKS-2019/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,7 +595,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "AMZ.LA-HACKS-2019";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

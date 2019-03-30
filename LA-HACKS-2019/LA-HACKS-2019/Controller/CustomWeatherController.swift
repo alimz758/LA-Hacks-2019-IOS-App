@@ -11,4 +11,11 @@ import UIKit
 
 class CustomWeatherController: UIViewController{
     
+    private var datePicker:UIDatePicker?
+    
+    datePicker = UIDatePciker()
+    datePciker?.datePickerMode = .date
+    @IBAction func dateAndTimePicker(_ sender: UIDatePicker) {
+    }
+    timeInputTextField.inputView = datePicker
 }

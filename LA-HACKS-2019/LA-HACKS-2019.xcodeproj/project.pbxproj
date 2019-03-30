@@ -12,6 +12,10 @@
 		8A624434224FC2F6004FA45D /* CustomWeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624433224FC2F6004FA45D /* CustomWeatherController.swift */; };
 		8A624436224FC399004FA45D /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624435224FC399004FA45D /* DateModel.swift */; };
 		8A624438224FC44F004FA45D /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A624437224FC44F004FA45D /* TimeModel.swift */; };
+		8A62443B224FDB02004FA45D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A62443A224FDB02004FA45D /* CustomCell.xib */; };
+		8A62443D224FDC6F004FA45D /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62443C224FDC6F004FA45D /* CustomCellViewController.swift */; };
+		8A62443E224FDC6F004FA45D /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62443C224FDC6F004FA45D /* CustomCellViewController.swift */; };
+		8A62443F224FDC6F004FA45D /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62443C224FDC6F004FA45D /* CustomCellViewController.swift */; };
 		8A72E699224F3888009F9D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E698224F3888009F9D11 /* AppDelegate.swift */; };
 		8A72E69B224F3888009F9D11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E69A224F3888009F9D11 /* ViewController.swift */; };
 		8A72E69E224F3888009F9D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A72E69C224F3888009F9D11 /* Main.storyboard */; };
@@ -44,6 +48,8 @@
 		8A624433224FC2F6004FA45D /* CustomWeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeatherController.swift; sourceTree = "<group>"; };
 		8A624435224FC399004FA45D /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		8A624437224FC44F004FA45D /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
+		8A62443A224FDB02004FA45D /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCell.xib; path = "LA-HACKS-2019/CustomCell.xib"; sourceTree = SOURCE_ROOT; };
+		8A62443C224FDC6F004FA45D /* CustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellViewController.swift; sourceTree = "<group>"; };
 		8A72E695224F3888009F9D11 /* LA-HACKS-2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LA-HACKS-2019.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A72E698224F3888009F9D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A72E69A224F3888009F9D11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				8A72E69C224F3888009F9D11 /* Main.storyboard */,
+				8A624439224FDA8F004FA45D /* CustomCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +122,15 @@
 				8A72E698224F3888009F9D11 /* AppDelegate.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8A624439224FDA8F004FA45D /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A62443A224FDB02004FA45D /* CustomCell.xib */,
+				8A62443C224FDC6F004FA45D /* CustomCellViewController.swift */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		8A72E68C224F3888009F9D11 = {
@@ -295,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A72E6A6224F388A009F9D11 /* LaunchScreen.storyboard in Resources */,
+				8A62443B224FDB02004FA45D /* CustomCell.xib in Resources */,
 				8A72E6A3224F388A009F9D11 /* Assets.xcassets in Resources */,
 				8A72E69E224F3888009F9D11 /* Main.storyboard in Resources */,
 			);
@@ -387,6 +404,7 @@
 				8A624432224FC290004FA45D /* WeatherDataModel.swift in Sources */,
 				8A624434224FC2F6004FA45D /* CustomWeatherController.swift in Sources */,
 				8A624436224FC399004FA45D /* DateModel.swift in Sources */,
+				8A62443D224FDC6F004FA45D /* CustomCellViewController.swift in Sources */,
 				8A624438224FC44F004FA45D /* TimeModel.swift in Sources */,
 				8A72E69B224F3888009F9D11 /* ViewController.swift in Sources */,
 				8A72E6A1224F3889009F9D11 /* LA_HACKS_2019.xcdatamodeld in Sources */,
@@ -399,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A72E6B1224F388A009F9D11 /* LA_HACKS_2019Tests.swift in Sources */,
+				8A62443E224FDC6F004FA45D /* CustomCellViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A72E6BC224F388A009F9D11 /* LA_HACKS_2019UITests.swift in Sources */,
+				8A62443F224FDC6F004FA45D /* CustomCellViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var weatherStatus: UILabel!
     
+    @IBAction func weatherListButton(_ sender: Any) {
+    }
     @IBAction func addNewWeatherDestination(_ sender: UIButton) {
     }
     override func viewDidLoad() {

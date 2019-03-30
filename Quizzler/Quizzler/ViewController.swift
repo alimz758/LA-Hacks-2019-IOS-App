@@ -10,14 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //Place your instance variables here
-    
+    //Library of images, images should be uploaded to image asset
+    let imageArr = []
     //create the question bank
     let questionBank = QuestionBank()
     var pickedAns : Bool = false
     var questionNumber: Int=0
     var scoreCounter: Int=0
-    @IBOutlet weak var questionLabel: UILabel!
+   
+    @IBOutlet weak var objectImage: UIImageView!
+    
     @IBOutlet weak var scoreLabel: UILabel!
 
     @IBOutlet weak var progressLabel: UILabel!
@@ -26,25 +28,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         nextQuestion()
     }
-    //button function
-    @IBAction func answerPressed(_ sender: AnyObject)
-    {
-        //if the True button is pressed
-        if sender.tag == 1
-        {
-            //the picked answer would be set true
-            pickedAns=true
-        }
-        //if the false button is chose
-        else
-        {
-            //the set answer  would be set to false
-            pickedAns=false
-        }
-        checkAnswer()
-        questionNumber+=1
-        nextQuestion()
-    }
+//    //voice recognition would go here
+//    @IBAction func answerPressed(_ sender: AnyObject)
+//    {
+//        //if the True button is pressed
+//        if sender.tag == 1
+//        {
+//            //the picked answer would be set true
+//            pickedAns=true
+//        }
+//        //if the false button is chose
+//        else
+//        {
+//            //the set answer  would be set to false
+//            pickedAns=false
+//        }
+//        checkAnswer()
+//        questionNumber+=1
+//        nextQuestion()
+//    }
     //update the
     func updateUI()
     {
@@ -52,16 +54,16 @@ class ViewController: UIViewController {
         //string with "\()"
         scoreLabel.text = "Score: \(scoreCounter)"
         //keeps track of the question number
-        progressLabel.text = "\(questionNumber+1)/13"
+        progressLabel.text = "\(questionNumber+1)/ \(imageArr.count)"
     }
     
 
     func nextQuestion()
     {
-        if questionNumber <= 12
+        if questionNumber <= imageArr.count
         {
             //load the next question on the label
-            questionLabel.text = questionBank.list[questionNumber].question
+            objectImage.image=UIImage.init(named: imageArr[questionNumber] as! String)
             updateUI()
         }
         else
@@ -100,6 +102,10 @@ class ViewController: UIViewController {
     {
        questionNumber=0
        nextQuestion()
+    }
+    func updateImage(){
+        //use image method
+        objectImage.image=UIImage.init(named: imageArr[questionNumber] as! String)
     }
     
 

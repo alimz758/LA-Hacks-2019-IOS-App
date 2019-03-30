@@ -1,6 +1,6 @@
-This is a quiz app for educational purposes for kids, that has library of questions, images and their labels. We implemented 
+This is a quiz app for educational purposes for kids, that has library of questions, images and their labels.
 
-Google ML Kit to the labal the objects. 
+We implemented Google ML Kit to the labal the objects. 
 
 We also implemented voice recognition, so if the user says the the word that matches with the label of the image,
 

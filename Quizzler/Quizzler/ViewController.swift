@@ -247,10 +247,5 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
         questionNumber=0
         nextQuestion()
     }
-    func updateImage(){
-         o
-    }
-    
-    
     
 }

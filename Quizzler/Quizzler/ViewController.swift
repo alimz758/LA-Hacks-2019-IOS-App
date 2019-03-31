@@ -15,11 +15,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
     var audioPlayer : AVAudioPlayer!
     
     // To-Do Library array should be here, items in this library have to have the same index with imageArr
-    let labelArray = ["hello", "bye", "great", "good"]
+    //let labelArray = ["hello", "bye", "great", "good"]
     //      TO-DO    MAGE LIBRARY HERE
     // let imageArr=[]
     //create the question bank
-    let questionBank = QuestionBank()
+    let imageLib = Library()
     var questionNumber: Int=0
     var scoreCounter: Int=0
     var voiceResult: String=""
@@ -166,18 +166,17 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
         //string with "\()"
         scoreLabel.text = "Score: \(scoreCounter)"
         //keeps track of the question number
-        progressLabel.text = "\(questionNumber+1)/ \(labelArray.count)"
+        progressLabel.text = "\(questionNumber+1)/ \(imageLib.list.count)"
         
     }
     
     
     func nextQuestion()
     {
-        if questionNumber <= labelArray.count - 1
+        if questionNumber <= imageLib.list.count - 1
         {
             //load the next image
-            //TO -DO
-            objectImage.image=UIImage.init(named: imageArr[questionNumber])
+            objectImage.image = imageLib.list[questionNumber].image
             updateUI()
         }
         else
@@ -199,7 +198,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
     {
         
             //store the correct answer
-            let correctAns = labelArray[questionNumber]
+            let correctAns = imageLib.list[questionNumber].label
             print("\(correctAns) \(voiceResult)")
             if correctAns == voiceResult
             {
@@ -237,13 +236,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
                     print(error.description)
                 }
             }
-        
-        
-        
     }
     //when start over, the question number would be zero
     func startOver()
     {
+        scoreCounter=0
         questionNumber=0
         nextQuestion()
     }

@@ -1,5 +1,7 @@
 # LA-Hacks-2019-IOS-App
 
+
+
 ## First-App-Idea
 This is a personalized weather app, that the user can set a date, time, and location to get a weather notification 
 
@@ -9,4 +11,8 @@ Half way through the hackathon and coding we found out to use the push-notificat
 
 we need to be registered on Apple Developer Account, so we stopped on working on this app and came-up with a 
 
-new app idea; Quizzler
+
+ ## Quizzler
+
+App idea in which you see it inside the this directory, LA-Hacks-2019; it is called Quizzler
+

@@ -13,7 +13,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
     
     //Place your instance variables here
     var audioPlayer : AVAudioPlayer!
+    
+    // To-Do Library array should be here, items in this library have to have the same index with imageArr
     let labelArray = ["hello", "bye", "great", "good"]
+    //      TO-DO    MAGE LIBRARY HERE
+    // let imageArr=[]
     //create the question bank
     let questionBank = QuestionBank()
     var questionNumber: Int=0
@@ -32,6 +36,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
     
     @IBOutlet weak var voiceTextField: UITextField!
     
+    @IBOutlet weak var objectImage: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     
@@ -162,6 +167,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
         scoreLabel.text = "Score: \(scoreCounter)"
         //keeps track of the question number
         progressLabel.text = "\(questionNumber+1)/ \(labelArray.count)"
+        
     }
     
     
@@ -169,8 +175,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
     {
         if questionNumber <= labelArray.count - 1
         {
-            //load the next question on the label
-            //questionLabel.text = questionBank.list[questionNumber].question
+            //load the next image
+            //TO -DO
+            objectImage.image=UIImage.init(named: imageArr[questionNumber])
             updateUI()
         }
         else
@@ -239,6 +246,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
     {
         questionNumber=0
         nextQuestion()
+    }
+    func updateImage(){
+         o
     }
     
     

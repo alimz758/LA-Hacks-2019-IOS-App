@@ -14,6 +14,7 @@ class Library
     //constructing 13 questions and append them to the list of Question
     init()
     {
-        
+        list.append(Image(imagePassedWithML: UIImage.init(named: "dog")! , labelPassedWithML: "dog"))
+        list.append(Image(imagePassedWithML:  UIImage.init(named: "cat")!, labelPassedWithML: "cat"))
     }
 }

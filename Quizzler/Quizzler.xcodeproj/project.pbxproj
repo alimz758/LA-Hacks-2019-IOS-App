@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1543F64322511A6B0025E5C4 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1543F64222511A6B0025E5C4 /* CameraHandler.swift */; };
 		4282D41B2250359600817514 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4282D41A2250359600817514 /* GoogleService-Info.plist */; };
 		633646BF1B8C657400FF45E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633646BE1B8C657400FF45E2 /* AppDelegate.swift */; };
 		633646C11B8C657400FF45E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633646C01B8C657400FF45E2 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1543F64222511A6B0025E5C4 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		4282D41A2250359600817514 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		633646B91B8C657400FF45E2 /* Quizzler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quizzler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633646BD1B8C657400FF45E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				633646BE1B8C657400FF45E2 /* AppDelegate.swift */,
 				633646C01B8C657400FF45E2 /* ViewController.swift */,
+				1543F64222511A6B0025E5C4 /* CameraHandler.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -182,7 +185,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "London App Brewery";
 				TargetAttributes = {
 					633646B81B8C657400FF45E2 = {
@@ -194,10 +197,9 @@
 			};
 			buildConfigurationList = 633646B41B8C657400FF45E2 /* Build configuration list for PBXProject "Quizzler" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -297,6 +299,7 @@
 				8A8A4327224B086A0014820F /* Question.swift in Sources */,
 				8A8A4329224B0AEF0014820F /* QuestionBank.swift in Sources */,
 				8A8A432F224B2E1B0014820F /* ProgressHUD.m in Sources */,
+				1543F64322511A6B0025E5C4 /* CameraHandler.swift in Sources */,
 				633646C11B8C657400FF45E2 /* ViewController.swift in Sources */,
 				633646BF1B8C657400FF45E2 /* AppDelegate.swift in Sources */,
 			);
@@ -328,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -383,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

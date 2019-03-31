@@ -9,5 +9,6 @@ target 'Quizzler' do
   pod 'SwiftyJSON'
   pod 'Firebase' 
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
   pod 'Firebase/MLVision'
 end

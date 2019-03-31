@@ -7,88 +7,157 @@
 //
 
 import UIKit
-import Speech // for voice recognition
-
-class ViewController: UIViewController, SFSpeechRecognizerDelegate {
+import Speech
+  
+class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     
-    //Library of images, images should be uploaded to image asset
-    //let imageArr = []
+    //Place your instance variables here
+    let imageArr = ["hello", "bye", "great", "good"]
     //create the question bank
     let questionBank = QuestionBank()
     var pickedAns : Bool = false
     var questionNumber: Int=0
     var scoreCounter: Int=0
-   
-    //declaring constant variables for voice recognititon
-    //------------------------------------------------------
-    //This will process the audio stream. It will give updates when the mic is receiving audio.
-    let audioEngine = AVAudioEngine()
-    //This will do the actual speech recognition. It can fail to recognize speech and return nil, so it’s best to make it an optional.
-    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
-    /*
-     Side Note: By default, the speech recognizer will detect the devices locale and in response recognize the language appropriate to that geographical location. The default language can also be set by passing in a locale argument and identifier. Like this: let speechRecognizer: SFSpeechRecognizer(locale: Locale.init(identifier: "en-US")
-    */
-    //This allocates speech as the user speaks in real-time and controls the buffering.
-    let request = SFSpeechAudioBufferRecognitionRequest()
-    //This will be used to manage, cancel, or stop the current recognition task.
-    var recognitionTask: SFSpeechRecognitionTask?
-
-    @IBOutlet weak var objectImage: UIImageView!
+    var voiceResult: String=""
+    
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
+    
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    
+    private var recognitionTask: SFSpeechRecognitionTask?
+    
+    private let audioEngine = AVAudioEngine()
+    
+    @IBOutlet weak var voiceTextField: UITextField!
     
     @IBOutlet weak var scoreLabel: UILabel!
-
+    @IBOutlet weak var recordButton: UIButton!
+    
+    @IBAction func recordButtonTapped(_ sender: UIButton) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            recordButton.isEnabled = false
+            recordButton.setTitle("Stopping", for: .disabled)
+            audioEngine.inputNode.removeTap(onBus: 0)
+            checkAnswer()
+            
+        } else {
+            try! startRecording()
+            recordButton.setTitle("Stop recording", for: [])
+           
+        }
+    }
     
     @IBOutlet weak var progressLabel: UILabel!
     
-    @IBOutlet weak var voiceConvertedToText: UITextField!
-//    @IBAction func startListetningButton(_ sender: UIButton) {
-//        self.recordAndRecognizeSpeech()
-//    }
-    
-    @IBAction func startRecordingButton(_ sender: UIButton) {
-        self.recordAndRecognizeSpeech()
-    }
-    @IBAction func stopRecordingButton(_ sender: UIButton) {
-        self.audioEngine.stop()
-        checkAnswer()
-    }
-    @IBOutlet var backgroundColorChange: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //nextQuestion()
+        recordButton.isEnabled = false
+        nextQuestion()
     }
-//    //voice recognition methods
-    //------------------------------
-    //It will record and process the speech as it comes in.
-    // set up for the audio engine and speech recognizer
-    func recordAndRecognizeSpeech(){
-        let node = audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus:0)
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
-            self.request.append(buffer)
+    override public func viewDidAppear(_ animated: Bool) {
+        speechRecognizer.delegate = self
+        
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            /*
+             The callback may not be called on the main thread. Add an
+             operation to the main queue to update the record button's state.
+             */
+            OperationQueue.main.addOperation {
+                switch authStatus {
+                case .authorized:
+                    self.recordButton.isEnabled = true
+                    
+                case .denied:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
+                    
+                case .restricted:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
+                    
+                case .notDetermined:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+                }
+            }
         }
-        //prepare and start the recording using the audio engin
-        audioEngine.prepare()
-        do{
-            try audioEngine.start()
-        }catch{
-            return print(error)
+    }
+    
+    private func startRecording() throws {
+        
+        // Cancel the previous task if it's running.
+        if let recognitionTask = recognitionTask {
+            recognitionTask.cancel()
+            self.recognitionTask = nil
         }
-        guard let myRecognizaer = SFSpeechRecognizer() else { fatalError("Unable to created a SFSpeechRecognizer object") }
-        if !myRecognizaer.isAvailable{
-            return
-        }
-        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try audioSession.setMode(AVAudioSessionModeMeasurement)
+        try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
+        
+        // Configure request so that results are returned before audio recording is finished
+        recognitionRequest.shouldReportPartialResults = true
+        
+        // A recognition task represents a speech recognition session.
+        // We keep a reference to the task so that it can be cancelled.
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            var isFinal = false
+            
             if let result = result {
                 let bestString = result.bestTranscription.formattedString
-                self.voiceConvertedToText.text = bestString
-            }else {
-                print(error)
-                // Stop recognizing speech if there is a problem.
-               // self.audioEngine.stop()
+                self.voiceTextField.text = bestString
+                self.voiceResult = bestString
+                isFinal = result.isFinal
             }
-        })
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+                self.recordButton.isEnabled = true
+                self.recordButton.setTitle("Start Recording", for: [])
+            }
+        }
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        try audioEngine.start()
+        
+        voiceTextField.text = "(Go ahead, I'm listening)"
     }
+    
+    // MARK: SFSpeechRecognizerDelegate
+    
+    public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        if available {
+            recordButton.isEnabled = true
+            recordButton.setTitle("Start Recording", for: [])
+        } else {
+            recordButton.isEnabled = false
+            recordButton.setTitle("Recognition not available", for: .disabled)
+        }
+    }
+    
+
+    // MARK: Interface Builder actions
+    
+   
     
     //update the
     func updateUI()
@@ -97,61 +166,56 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         //string with "\()"
         scoreLabel.text = "Score: \(scoreCounter)"
         //keeps track of the question number
-        //progressLabel.text = "\(questionNumber+1)/ \(imageArr.count)"
+        progressLabel.text = "\(questionNumber+1)/ \(imageArr.count)"
     }
     
-
+    
     func nextQuestion()
     {
-        backgroundColorChange.backgroundColor = UIColor.blue
-//        if questionNumber <= imageArr.count
-//        {
-//            //load the next question on the label
-//            objectImage.image=UIImage.init(named: imageArr[questionNumber] as! String)
-//            updateUI()
-//        }
-//        else
-//        {
-//            //pop-up alert
-//            let uiAlert = UIAlertController(title: "Awesome!", message: "The game is over! Do you want to take it again", preferredStyle: .alert )
-//            //pop-alert action
-//            let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
-//                self.startOver()
-//            }
-//            //action for the pop-up
-//            uiAlert.addAction(restartAction)
-//            //present the alert to the viewer, does nothing after completion
-//            present(uiAlert, animated: true, completion: nil)
-//        }
+        if questionNumber <= imageArr.count - 1
+        {
+            //load the next question on the label
+            //questionLabel.text = questionBank.list[questionNumber].question
+            updateUI()
+        }
+        else
+        {
+            //pop-up alert
+            let uiAlert = UIAlertController(title: "Awesome!", message: "The game is over! Do you want to take it again", preferredStyle: .alert )
+            //pop-alert action
+            let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
+                self.startOver()
+            }
+            //action for the pop-up
+            uiAlert.addAction(restartAction)
+            //present the alert to the viewer, does nothing after completion
+            present(uiAlert, animated: true, completion: nil)
+        }
     }
     //
     func checkAnswer()
     {
         //store the correct answer
-        let correctAns = questionBank.list[questionNumber].answer
-        if correctAns == pickedAns
+        let correctAns = imageArr[questionNumber]
+        if correctAns == voiceResult
         {
             scoreCounter = scoreCounter + 1
             //Used from -> https://github.com/relatedcode/ProgressHUD
-            backgroundColorChange.backgroundColor = UIColor.green
+            ProgressHUD.showSuccess("Correct!")
         }
         else{
             //Used from -> https://github.com/relatedcode/ProgressHUD
-             backgroundColorChange.backgroundColor = UIColor.red
+            ProgressHUD.showError("Wrong!")
         }
-    
+        
     }
     //when start over, the question number would be zero
     func startOver()
     {
-       questionNumber=0
-       nextQuestion()
+        questionNumber=0
+        nextQuestion()
     }
-//    func updateImage(){
-//        //use image method
-//        objectImage.image=UIImage.init(named: imageArr[questionNumber] as! String)
-//    }
     
-
+    
     
 }

@@ -13,6 +13,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     
     //Place your instance variables here
     let imageArr = ["hello", "bye", "great", "good"]
+    let checker: Bool = true
     //create the question bank
     let questionBank = QuestionBank()
     var pickedAns : Bool = false
@@ -33,18 +34,20 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     
-    @IBAction func recordButtonTapped(_ sender: UIButton) {
-        if audioEngine.isRunning {
+    @IBAction func start(_ sender: UIButton) {
+        try! startRecording()
+        recordButton.setTitle("Stop recording", for: [])
+    }
+    @IBAction func stop(_ sender: UIButton) {
             audioEngine.stop()
             recognitionRequest?.endAudio()
+            recognitionTask = nil
+            recognitionRequest = nil
             recordButton.isEnabled = false
             recordButton.setTitle("Stopping", for: .disabled)
             audioEngine.inputNode.removeTap(onBus: 0)
             
-        } else {
-            try! startRecording()
-            recordButton.setTitle("Stop recording", for: [])
-        }
+        
     }
     
     @IBOutlet weak var progressLabel: UILabel!
@@ -82,7 +85,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             }
         }
     }
-    
     private func startRecording() throws {
         
         // Cancel the previous task if it's running.
@@ -100,7 +102,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
         
         let inputNode = audioEngine.inputNode
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
-        
         // Configure request so that results are returned before audio recording is finished
         recognitionRequest.shouldReportPartialResults = true
         
@@ -110,14 +111,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             var isFinal = false
             
             if let result = result {
-                let bestString = result.bestTranscription.formattedString
-                self.voiceTextField.text = bestString
-                self.voiceResult = bestString.lowercased()
-            
+                let bestString = result.bestTranscription.formattedString.components(separatedBy: " ").first
+                self.voiceTextField.text = bestString!
+                self.voiceResult = bestString!.lowercased()
                 isFinal = result.isFinal
-                
+                //print(self.voiceResult)
+                self.checkAnswer()
             }
-            
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -128,19 +128,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
                 self.recordButton.isEnabled = true
                 self.recordButton.setTitle("Start Recording", for: [])
             }
-            self.checkAnswer()
             
         }
-        
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
             self.recognitionRequest?.append(buffer)
         }
-        
         audioEngine.prepare()
-        
         try audioEngine.start()
-        
         voiceTextField.text = "(Go ahead, I'm listening)"
     }
     
@@ -155,12 +150,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             recordButton.setTitle("Recognition not available", for: .disabled)
         }
     }
-    
 
-    // MARK: Interface Builder actions
-    
-   
-    
     //update the
     func updateUI()
     {
@@ -211,6 +201,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             //Used from -> https://github.com/relatedcode/ProgressHUD
             ProgressHUD.showError("Wrong!")
         }
+        
     }
     //when start over, the question number would be zero
     func startOver()

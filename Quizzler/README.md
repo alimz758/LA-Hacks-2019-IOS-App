@@ -1,3 +1,5 @@
+# Second App Idea
+
 This is a quiz app for educational purposes for kids, that has library of questions, images and their labels.
 
 We implemented Google ML Kit to the labal the objects. 

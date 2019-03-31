@@ -13,13 +13,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     
     //Place your instance variables here
     let imageArr = ["hello", "bye", "great", "good"]
-    let checker: Bool = true
     //create the question bank
     let questionBank = QuestionBank()
-    var pickedAns : Bool = false
     var questionNumber: Int=0
     var scoreCounter: Int=0
     var voiceResult: String=""
+    var checker: Bool = false
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
@@ -116,7 +115,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
                 self.voiceResult = bestString!.lowercased()
                 isFinal = result.isFinal
                 //print(self.voiceResult)
-                self.checkAnswer()
+                self.checker = !self.checker
+                if self.checker{
+                    self.checkAnswer()
+                    self.questionNumber+=1
+                    self.nextQuestion()
+                }
+                
             }
             if error != nil || isFinal {
                 self.audioEngine.stop()
@@ -187,20 +192,22 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     //
     func checkAnswer()
     {
+       
+            //store the correct answer
+            let correctAns = imageArr[questionNumber]
+            print("\(correctAns) \(voiceResult)")
+            if correctAns == voiceResult
+            {
+                scoreCounter = scoreCounter + 1
+                //Used from -> https://github.com/relatedcode/ProgressHUD
+                ProgressHUD.showSuccess("Correct!")
+            }
+            else{
+                //Used from -> https://github.com/relatedcode/ProgressHUD
+                ProgressHUD.showError("Wrong!")
+            }
         
-        //store the correct answer
-        let correctAns = imageArr[questionNumber]
-         print("\(correctAns) \(voiceResult)")
-        if correctAns == voiceResult
-        {
-            scoreCounter = scoreCounter + 1
-            //Used from -> https://github.com/relatedcode/ProgressHUD
-            ProgressHUD.showSuccess("Correct!")
-        }
-        else{
-            //Used from -> https://github.com/relatedcode/ProgressHUD
-            ProgressHUD.showError("Wrong!")
-        }
+        
         
     }
     //when start over, the question number would be zero

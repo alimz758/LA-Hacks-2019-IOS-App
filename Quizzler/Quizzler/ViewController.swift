@@ -8,17 +8,19 @@
 
 import UIKit
 import Speech
-  
-class ViewController: UIViewController, SFSpeechRecognizerDelegate{
+import AVFoundation
+class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayerDelegate{
     
     //Place your instance variables here
-    let imageArr = ["hello", "bye", "great", "good"]
+    var audioPlayer : AVAudioPlayer!
+    let labelArray = ["hello", "bye", "great", "good"]
     //create the question bank
     let questionBank = QuestionBank()
     var questionNumber: Int=0
     var scoreCounter: Int=0
     var voiceResult: String=""
     var checker: Bool = false
+    
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
@@ -45,8 +47,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             recordButton.isEnabled = false
             recordButton.setTitle("Stopping", for: .disabled)
             audioEngine.inputNode.removeTap(onBus: 0)
-            
-        
     }
     
     @IBOutlet weak var progressLabel: UILabel!
@@ -108,7 +108,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
         // We keep a reference to the task so that it can be cancelled.
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
             var isFinal = false
-            
             if let result = result {
                 let bestString = result.bestTranscription.formattedString.components(separatedBy: " ").first
                 self.voiceTextField.text = bestString!
@@ -121,7 +120,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
                     self.questionNumber+=1
                     self.nextQuestion()
                 }
-                
             }
             if error != nil || isFinal {
                 self.audioEngine.stop()
@@ -163,13 +161,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
         //string with "\()"
         scoreLabel.text = "Score: \(scoreCounter)"
         //keeps track of the question number
-        progressLabel.text = "\(questionNumber+1)/ \(imageArr.count)"
+        progressLabel.text = "\(questionNumber+1)/ \(labelArray.count)"
     }
     
     
     func nextQuestion()
     {
-        if questionNumber <= imageArr.count - 1
+        if questionNumber <= labelArray.count - 1
         {
             //load the next question on the label
             //questionLabel.text = questionBank.list[questionNumber].question
@@ -192,19 +190,45 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     //
     func checkAnswer()
     {
-       
+        
             //store the correct answer
-            let correctAns = imageArr[questionNumber]
+            let correctAns = labelArray[questionNumber]
             print("\(correctAns) \(voiceResult)")
             if correctAns == voiceResult
             {
                 scoreCounter = scoreCounter + 1
                 //Used from -> https://github.com/relatedcode/ProgressHUD
-                ProgressHUD.showSuccess("Correct!")
+                do
+                {
+                    let rightSoundURL = Bundle.main.url(forResource: "right", withExtension: "wav")!
+                    audioPlayer = try AVAudioPlayer(contentsOf: rightSoundURL)
+                    guard let player = audioPlayer else { return }
+                    
+                    player.prepareToPlay()
+                    player.play()
+                    
+                }
+                    //catch error
+                catch let error as NSError {
+                    print(error.description)
+                }
             }
             else{
                 //Used from -> https://github.com/relatedcode/ProgressHUD
-                ProgressHUD.showError("Wrong!")
+                do
+                {
+                    let wrongSoundURL = Bundle.main.url(forResource: "wrong", withExtension: "wav")!
+                    audioPlayer = try AVAudioPlayer(contentsOf: wrongSoundURL)
+                    guard let player = audioPlayer else { return }
+                    
+                    player.prepareToPlay()
+                    player.play()
+                    
+                }
+                    //catch error
+                catch let error as NSError {
+                    print(error.description)
+                }
             }
         
         

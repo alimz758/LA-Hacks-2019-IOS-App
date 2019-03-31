@@ -40,12 +40,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             recordButton.isEnabled = false
             recordButton.setTitle("Stopping", for: .disabled)
             audioEngine.inputNode.removeTap(onBus: 0)
-            checkAnswer()
             
         } else {
             try! startRecording()
             recordButton.setTitle("Stop recording", for: [])
-           
         }
     }
     
@@ -114,8 +112,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             if let result = result {
                 let bestString = result.bestTranscription.formattedString
                 self.voiceTextField.text = bestString
-                self.voiceResult = bestString
+                self.voiceResult = bestString.lowercased()
+            
                 isFinal = result.isFinal
+                
             }
             
             if error != nil || isFinal {
@@ -128,6 +128,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
                 self.recordButton.isEnabled = true
                 self.recordButton.setTitle("Start Recording", for: [])
             }
+            self.checkAnswer()
+            
         }
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
@@ -195,8 +197,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
     //
     func checkAnswer()
     {
+        
         //store the correct answer
         let correctAns = imageArr[questionNumber]
+         print("\(correctAns) \(voiceResult)")
         if correctAns == voiceResult
         {
             scoreCounter = scoreCounter + 1
@@ -207,7 +211,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate{
             //Used from -> https://github.com/relatedcode/ProgressHUD
             ProgressHUD.showError("Wrong!")
         }
-        
     }
     //when start over, the question number would be zero
     func startOver()

@@ -177,7 +177,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate,AVAudioPlayer
         {
             //load the next image
             //TO -DO
-            objectImage.image=UIImage.init(named: imageArr[questionNumber])
+            //objectImage.image=UIImage.init(named: imageArr[questionNumber])
             updateUI()
         }
         else

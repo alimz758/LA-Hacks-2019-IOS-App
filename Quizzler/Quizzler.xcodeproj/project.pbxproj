@@ -14,8 +14,8 @@
 		633646C91B8C657400FF45E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633646C71B8C657400FF45E2 /* LaunchScreen.xib */; };
 		8A12A3EE22509D56003A0FEF /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A12A3ED22509D56003A0FEF /* right.wav */; };
 		8A12A3F022509D5D003A0FEF /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A12A3EF22509D5D003A0FEF /* wrong.wav */; };
-		8A8A4327224B086A0014820F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4326224B086A0014820F /* Question.swift */; };
-		8A8A4329224B0AEF0014820F /* QuestionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4328224B0AEF0014820F /* QuestionBank.swift */; };
+		8A8A4327224B086A0014820F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4326224B086A0014820F /* Image.swift */; };
+		8A8A4329224B0AEF0014820F /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4328224B0AEF0014820F /* Library.swift */; };
 		8A8A432E224B2E1B0014820F /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A8A432B224B2E1B0014820F /* ProgressHUD.bundle */; };
 		8A8A432F224B2E1B0014820F /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A432D224B2E1B0014820F /* ProgressHUD.m */; };
 		ADEB04ED1FBDFEAA00026359 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633646C21B8C657400FF45E2 /* Main.storyboard */; };
@@ -33,8 +33,8 @@
 		633646C81B8C657400FF45E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8A12A3ED22509D56003A0FEF /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = right.wav; sourceTree = "<group>"; };
 		8A12A3EF22509D5D003A0FEF /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
-		8A8A4326224B086A0014820F /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
-		8A8A4328224B0AEF0014820F /* QuestionBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBank.swift; sourceTree = "<group>"; };
+		8A8A4326224B086A0014820F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		8A8A4328224B0AEF0014820F /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		8A8A432A224B2E1A0014820F /* Quizzler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quizzler-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A8A432B224B2E1B0014820F /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		8A8A432C224B2E1B0014820F /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		EBB1C72C1B946C530011F5C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8A8A4326224B086A0014820F /* Question.swift */,
-				8A8A4328224B0AEF0014820F /* QuestionBank.swift */,
+				8A8A4326224B086A0014820F /* Image.swift */,
+				8A8A4328224B0AEF0014820F /* Library.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -294,8 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A8A4327224B086A0014820F /* Question.swift in Sources */,
-				8A8A4329224B0AEF0014820F /* QuestionBank.swift in Sources */,
+				8A8A4327224B086A0014820F /* Image.swift in Sources */,
+				8A8A4329224B0AEF0014820F /* Library.swift in Sources */,
 				8A8A432F224B2E1B0014820F /* ProgressHUD.m in Sources */,
 				633646C11B8C657400FF45E2 /* ViewController.swift in Sources */,
 				633646BF1B8C657400FF45E2 /* AppDelegate.swift in Sources */,

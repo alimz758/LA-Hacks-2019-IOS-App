@@ -1,4 +1,4 @@
-# LA-Hacks-2019-IOS-App
+# LA-Hacks-2019-iOS-App
 
 
 ## First-App-Idea

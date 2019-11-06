@@ -1,4 +1,4 @@
-# Second App Idea - Quizzler
+# App Idea - Quizzler
 
 This is a quiz app for educational purposes for kids, that has library of questions, images, and their labels.
 

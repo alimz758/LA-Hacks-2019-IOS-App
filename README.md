@@ -1,16 +1,17 @@
-# LA-Hacks-2019-iOS-App
+# Second App Idea - Quizzler
 
+This is a quiz app for educational purposes for kids, that has library of questions, images, and their labels.
 
-## First-App-Idea
-This is a personalized weather app, that the user can set a date, time, and location to get a weather notification 
+We implemented Google ML Kit to get the label of the objects. 
 
-and reminder to get the needed clothings for the weather, i.e an umbrella for a rainy day. 
+We also implemented voice recognition, so if the user says the the word that matches with the label of the image,
 
-Half way through the hackathon and coding we found out to use the push-notification feature 
+the user gets point and the next image of the library would get loaded.
 
-we need to be registered on Apple Developer Account, so we stopped on working on this app and came-up with a second 
+Parents can take pictures of different objects to add to the library of the images.
 
-app idea, Quizzler. Read through README.md file in Quizzler directory for more information on this app.
+Since we used Google ML kit, https://firebase.google.com/docs/ml-kit/ios/label-images, we were not able to get a specific 
 
+label, like a specific fruit. That implementation requires more advanced ML that non of us knew how to do that in 
 
-
+the time-line of the hackathon
